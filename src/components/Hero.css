@@ -1,0 +1,39 @@
+.featured-content {
+    height: 60vh;
+    padding: 100px;
+}
+
+.featured-title {
+    width: 600px;
+}
+
+.featured-desc {
+    width: 500px;
+    color: lightgray;
+    margin: 30px 0;
+    font-size: large;
+    font-weight: 400;
+    font-family: "Rubik", sans-serif;
+
+}
+
+.featured-button {
+    background-color: crimson;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.featured-button:hover {
+    background-color: darkred;
+}
+
+.featured-button.rent {
+    margin: 0 20px;
+    padding-inline: 24px;
+}
