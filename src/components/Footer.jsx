@@ -27,7 +27,7 @@ function Footer() {
                     <li>Coorporate Information</li>
                     <li>Investor Relations</li>
                 </footer>
-                <footer class="footer-logo">
+                <footer className="footer-logo">
                     <h1>Freakflix</h1>
                 </footer>
             </div>
