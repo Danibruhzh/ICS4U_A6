@@ -1,7 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import './Feature.css'
 
 function Feature() {
+
+    const [movies, setMovies] = useState([]);
+
+    useEffect(() => {
+        (async function getMovies() {
+            const response = await axios.get(
+                `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_KEY}`
+            );
+            setMovies(response.data.results);
+        })();
+    }, []);
     //
     return (
         <div className="movie-list-container">

@@ -3,10 +3,16 @@
 .featured-content {
     height: 60vh;
     padding: 100px;
+    display: flex;
+}
+
+.movie-poster{
+    height:100%;
 }
 
 .featured-title {
     width: 600px;
+    font-size: 4rem;
 }
 
 .featured-desc {
@@ -21,6 +27,8 @@
 .featured-button {
     background-color: crimson;
     color: white;
+    width: 100px;
+    height: 40px;
     padding: 10px 20px;
     border-radius: 10px;
     outline: none;
@@ -34,11 +42,6 @@
     background-color: darkred;
 }
 
-.featured-button.rent {
-    margin: 0 20px;
-    padding-inline: 24px;
-}
-
-.movie-poster{
-    /* position:absolute; */
+.featured-button.rent{
+    margin: 0px 20px;
 }
