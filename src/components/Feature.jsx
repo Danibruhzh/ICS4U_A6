@@ -14,64 +14,66 @@ function Feature() {
             setMovies(response.data.results);
         })();
     }, []);
-    //
+
+    console.log(movies);
+    
     return (
         <div className="movie-list-container">
             <h1 className="movie-list-title"> Header </h1>
             <div className="movie-list-wrapper">
                 <div className="movie-list">
                     <div className="movie-list-item">
-                        <img className="movie-list-item-image" src="" alt="The Chosen" />
-                        <span className="movie-list-item-title">Placeholder</span>
+                        <img className="movie-list-item-image" src="" alt="" />
+                        <span className="movie-list-item-title">{movies[1].original_title}</span>
                         <p className="movie-list-item-desc">Description</p>
                         <button className="movie-list-item-button">Watch</button>
                         <button className="movie-list-item-button rent">Rent</button>
                     </div>
                     <div className="movie-list-item">
-                        <img className="movie-list-item-image" src="" alt="Arcane" />
-                        <span className="movie-list-item-title">Placeholder</span>
+                        <img className="movie-list-item-image" src="" alt="" />
+                        <span className="movie-list-item-title">{movies[2].original_title}</span>
                         <p className="movie-list-item-desc">Description</p>
                         <button className="movie-list-item-button">Watch</button>
                         <button className="movie-list-item-button rent">Rent</button>
                     </div>
                     <div className="movie-list-item">
-                        <img className="movie-list-item-image" src="" alt="Attack On Titan" />
-                        <span className="movie-list-item-title">Placeholder</span>
+                        <img className="movie-list-item-image" src="" alt="" />
+                        <span className="movie-list-item-title">{movies[3].original_title}</span>
                         <p className="movie-list-item-desc">Description</p>
                         <button className="movie-list-item-button">Watch</button>
                         <button className="movie-list-item-button rent">Rent</button>
                     </div>
                     <div className="movie-list-item">
-                        <img className="movie-list-item-image" src="" alt="Breaking Bad" />
-                        <span className="movie-list-item-title">Placeholder</span>
+                        <img className="movie-list-item-image" src="" alt="" />
+                        <span className="movie-list-item-title">{movies[4].original_title}</span>
                         <p className="movie-list-item-desc">Description</p>
                         <button className="movie-list-item-button">Watch</button>
                         <button className="movie-list-item-button rent">Rent</button>
                     </div>
                     <div className="movie-list-item">
-                        <img className="movie-list-item-image" src="" alt="Better Call Saul" />
-                        <span className="movie-list-item-title">Placeholder</span>
+                        <img className="movie-list-item-image" src="" alt="" />
+                        <span className="movie-list-item-title">{movies[5].original_title}</span>
                         <p className="movie-list-item-desc">Description</p>
                         <button className="movie-list-item-button">Watch</button>
                         <button className="movie-list-item-button rent">Rent</button>
                     </div>
                     <div className="movie-list-item">
-                        <img className="movie-list-item-image" src="" alt="Game of Thrones" />
-                        <span className="movie-list-item-title">Placeholder</span>
+                        <img className="movie-list-item-image" src="" alt="" />
+                        <span className="movie-list-item-title">{movies[6].original_title}</span>
                         <p className="movie-list-item-desc">Description</p>
                         <button className="movie-list-item-button">Watch</button>
                         <button className="movie-list-item-button rent">Rent</button>
                     </div>
                     <div className="movie-list-item">
-                        <img className="movie-list-item-image" src="" alt="Avatar: The Last Airbender" />
-                        <span className="movie-list-item-title">Placeholder</span>
+                        <img className="movie-list-item-image" src="" alt="" />
+                        <span className="movie-list-item-title">{movies[7].original_title}</span>
                         <p className="movie-list-item-desc">Description</p>
                         <button className="movie-list-item-button">Watch</button>
                         <button className="movie-list-item-button rent">Rent</button>
                     </div>
                     <div className="movie-list-item">
-                        <img className="movie-list-item-image" src='' alt="The Sopranos" />
-                        <span className="movie-list-item-title">Placeholder</span>
+                        <img className="movie-list-item-image" src='' alt="" />
+                        <span className="movie-list-item-title">{movies[8].original_title}</span>
                         <p className="movie-list-item-desc">Description</p>
                         <button className="movie-list-item-button watch">Watch</button>
                         <button className="movie-list-item-button rent">Rent</button>
@@ -85,5 +87,6 @@ function Feature() {
         </div>
     )
 }
+
 
 export default Feature
