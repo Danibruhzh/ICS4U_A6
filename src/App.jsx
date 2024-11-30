@@ -6,12 +6,12 @@ import './App.css'
 // import Header from './components/Header'
 // import Footer from './components/Footer'
 // import Genre from './components/Genre'
-// import GenreView from './views/GenreView'
+import GenreView from './views/GenreView'
 import DetailView from './views/DetailView'
 import LoginView from './views/LoginView'
 import RegisterView from './views/RegisterView'
 import HomeView from './views/HomeView'
-import MoviesView from './views/Moviesview'
+import MoviesView from './views/MoviesView'
 
 function App() {
 
