@@ -6,9 +6,6 @@ import './Hero.css';
 function Hero() {
   const [movie, setMovie] = useState([]);
 
-
-  // `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_KEY}`
-
   useEffect(() => {
     (async function getMovies() {
       const response = await axios.get(

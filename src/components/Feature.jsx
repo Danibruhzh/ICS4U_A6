@@ -3,7 +3,6 @@ import axios from "axios";
 import './Feature.css'
 
 function Feature() {
-
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
@@ -15,77 +14,29 @@ function Feature() {
         })();
     }, []);
 
-    console.log(movies);
-    
     return (
         <div className="movie-list-container">
             <h1 className="movie-list-title"> Header </h1>
             <div className="movie-list-wrapper">
                 <div className="movie-list">
-                    <div className="movie-list-item">
-                        <img className="movie-list-item-image" src="" alt="" />
-                        <span className="movie-list-item-title">{movies[1].original_title}</span>
-                        <p className="movie-list-item-desc">Description</p>
-                        <button className="movie-list-item-button">Watch</button>
-                        <button className="movie-list-item-button rent">Rent</button>
-                    </div>
-                    <div className="movie-list-item">
-                        <img className="movie-list-item-image" src="" alt="" />
-                        <span className="movie-list-item-title">{movies[2].original_title}</span>
-                        <p className="movie-list-item-desc">Description</p>
-                        <button className="movie-list-item-button">Watch</button>
-                        <button className="movie-list-item-button rent">Rent</button>
-                    </div>
-                    <div className="movie-list-item">
-                        <img className="movie-list-item-image" src="" alt="" />
-                        <span className="movie-list-item-title">{movies[3].original_title}</span>
-                        <p className="movie-list-item-desc">Description</p>
-                        <button className="movie-list-item-button">Watch</button>
-                        <button className="movie-list-item-button rent">Rent</button>
-                    </div>
-                    <div className="movie-list-item">
-                        <img className="movie-list-item-image" src="" alt="" />
-                        <span className="movie-list-item-title">{movies[4].original_title}</span>
-                        <p className="movie-list-item-desc">Description</p>
-                        <button className="movie-list-item-button">Watch</button>
-                        <button className="movie-list-item-button rent">Rent</button>
-                    </div>
-                    <div className="movie-list-item">
-                        <img className="movie-list-item-image" src="" alt="" />
-                        <span className="movie-list-item-title">{movies[5].original_title}</span>
-                        <p className="movie-list-item-desc">Description</p>
-                        <button className="movie-list-item-button">Watch</button>
-                        <button className="movie-list-item-button rent">Rent</button>
-                    </div>
-                    <div className="movie-list-item">
-                        <img className="movie-list-item-image" src="" alt="" />
-                        <span className="movie-list-item-title">{movies[6].original_title}</span>
-                        <p className="movie-list-item-desc">Description</p>
-                        <button className="movie-list-item-button">Watch</button>
-                        <button className="movie-list-item-button rent">Rent</button>
-                    </div>
-                    <div className="movie-list-item">
-                        <img className="movie-list-item-image" src="" alt="" />
-                        <span className="movie-list-item-title">{movies[7].original_title}</span>
-                        <p className="movie-list-item-desc">Description</p>
-                        <button className="movie-list-item-button">Watch</button>
-                        <button className="movie-list-item-button rent">Rent</button>
-                    </div>
-                    <div className="movie-list-item">
-                        <img className="movie-list-item-image" src='' alt="" />
-                        <span className="movie-list-item-title">{movies[8].original_title}</span>
-                        <p className="movie-list-item-desc">Description</p>
-                        <button className="movie-list-item-button watch">Watch</button>
-                        <button className="movie-list-item-button rent">Rent</button>
-                    </div>
+                    {movies.slice(1, 9).map((movie, index) => (
+                        <div className="movie-list-item" key={index}>
+                            <img
+                                className="movie-list-item-image"
+                                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                alt={movie.title}
+                            />
+                            <span className="movie-list-item-title">{movie.original_title}</span>
+                            <p className="movie-list-item-desc">{movie.overview || "Description"}</p>
+                            <button className="movie-list-item-button">Watch</button>
+                            <button className="movie-list-item-button rent">Rent</button>
+                        </div>
+                    ))}
                 </div>
-
                 <i className="fa-solid fa-arrow-right arrow"></i>
-
             </div>
-
         </div>
-    )
+    );
 }
 
 
