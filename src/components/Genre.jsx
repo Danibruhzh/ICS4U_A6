@@ -16,10 +16,10 @@ function Genre() {
     }, []);
 
     return (
-        <div>
-            <ol>
-                {genres.slice(0, 20).map((genre, index) => (
-                    <ul>
+        <div className="genre-container">
+            <ol className="genre-list">
+                {genres.slice(0, 20).map((genre) => (
+                    <ul key={genre.id} className="genre" onClick={() => loadGenre(genre.id)}> {/* fix the onCLick */}
                         {genre.name}
                     </ul>
                 ))}
