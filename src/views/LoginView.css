@@ -2,7 +2,6 @@
     font-family: "Protest Strike", sans-serif;
 }
 
-
 .background {
     opacity: 85%;
     position: fixed;
@@ -14,7 +13,7 @@
     filter: brightness(40%)
 }
 
-.logo {
+.title {
     margin: auto;
     color: crimson;
     padding: 2vh;
@@ -22,7 +21,7 @@
 
     width: 50%;
 
-    top: 14vh;
+    top: 10vh;
     left: 50%;
     transform: translate(-50%, -50%);
 
@@ -34,7 +33,6 @@
     font-family: "Protest Strike", sans-serif;
     font-weight: 200;
     font-size: 15vh;
-
 }
 
 .island {
@@ -44,7 +42,7 @@
     padding: 30px;
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.75);
-    transform: translate(-50%, +20vh);
+    transform: translate(-50%, +17vh);
 }
 
 .island h2 {
@@ -54,7 +52,7 @@
 }
 
 .island form {
-    margin: 25px 0 65px;
+    margin: 25px 0 40px;
 }
 
 .field {
@@ -109,7 +107,7 @@ form button {
     color: #fff;
     font-weight: 500;
     border-radius: 4px;
-    margin: 25px 0 10px;
+    margin: 10px 0;
     background: crimson;
     cursor: pointer;
     transition: 0.1s ease;

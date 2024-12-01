@@ -33,11 +33,15 @@
 .menu-list-item {
     margin-inline: 20px;
     cursor: pointer;
+    transition: all 0.1s ease-in-out;
 }
 
-
 .active {
-    text-decoration: underline;
+    color: crimson;
+}
+
+.menu-list-item:hover {
+    color:crimson;
 }
 
 .search {
@@ -71,6 +75,8 @@
 
 .sign-in {
     border-radius: 20px;
+    padding:0;
+    font-size: 13px;
     width: 70px;
     height: 30px;
     position: relative;
@@ -78,4 +84,10 @@
     outline: none;
     border: none;
     transition: all 0.1 ease-in-out;
+}
+
+@media only screen and (max-width: 900px) {
+    .menu-container {
+        display: none;
+    }
 }

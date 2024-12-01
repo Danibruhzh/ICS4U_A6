@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import './Genre.css'
 
 function Genre() {
-    const [genres, setGenres] = useState([])
+    const [genres, setGenres] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         (async function getGenres() {
@@ -15,11 +16,19 @@ function Genre() {
         })();
     }, []);
 
+    function loadGenre(id){
+        navigate(`genre/${id}`);
+    }
+
+    function refreshPage(){ 
+        window.location.reload(); 
+    }
+
     return (
         <div className="genre-container">
             <ol className="genre-list">
                 {genres.slice(0, 20).map((genre) => (
-                    <ul key={genre.id} className="genre" onClick={() => loadGenre(genre.id)}> {/* fix the onCLick */}
+                    <ul key={genre.id} className="genre" onClick={() => {loadGenre(genre.id), refreshPage()}}>  
                         {genre.name}
                     </ul>
                 ))}

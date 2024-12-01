@@ -29,7 +29,7 @@ function Header() {
 
                 <div className="sign-in-button-container">
                     <div className="sign-in-button">
-                        <form action="index.html">
+                        <form action="/login">
                             <button className="sign-in" type="submit">Sign-in</button>
                         </form>
                     </div>
