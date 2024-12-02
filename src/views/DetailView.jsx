@@ -1,13 +1,14 @@
 import './DetailView.css'
-// import Feature from '../components/Feature'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 function DetailView() {
     const [movie, setMovie] = useState([]);
+    const [genres, setGenres] = useState([]);
     const params = useParams();
-
+    const genreMap = new Map();
+    const iterator = genreMap.values();
 
     useEffect(() => {
         (async function getMovie() {
@@ -15,9 +16,13 @@ function DetailView() {
                 `https://api.themoviedb.org/3/movie/${params.id}?api_key=${import.meta.env.VITE_TMDB_KEY}&append_to_response=videos`
             );
             setMovie(response.data);
+            setGenres(response.data.genres);
         })();
     }, []);
-    console.log(params.id);
+
+    genres.forEach((obj) => {
+        genreMap.set(obj.id, obj.name);
+    });
 
     return (
         <div className="movie-detail">
@@ -26,6 +31,10 @@ function DetailView() {
             <div className="movie-info">
                 <p><strong>Release Date:</strong> {movie.release_date}</p>
                 <p><strong>Runtime:</strong> {movie.runtime} minutes</p>
+                <p><strong>Budget:</strong> ${movie.budget}</p>
+                <p><strong>Revenue:</strong> ${movie.revenue} </p>
+                <p><strong>Overall Rating:</strong> {movie.vote_average}/10 ({movie.vote_count} ratings)</p>
+                <p><strong>Genres:</strong> {iterator.next().value}, {iterator.next().value}</p>
             </div>
             {movie.poster_path && (
                 <img

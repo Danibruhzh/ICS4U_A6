@@ -9,7 +9,7 @@
 .header-container {
     display: flex;
     align-items: center;
-    padding: 0 50px;
+    padding: 0 20px 0 50px;
     height: 100%;
     color: white;
 }
@@ -22,6 +22,16 @@
     font-size: 20px;
     display: flex;
     color: crimson;
+    cursor:pointer;
+}
+
+a {
+    color: inherit; /* Inherit the text color of the parent element */
+    text-decoration: none; /* Remove underline */
+}
+
+a:link, a:visited {
+    color: white; /* Default color for links */
 }
 
 .menu-list {
@@ -61,6 +71,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width:80px;
 }
 
 .sign-in-button {
@@ -74,6 +85,36 @@
 }
 
 .sign-in {
+    border-radius: 20px;
+    padding:0;
+    font-size: 13px;
+    width: 70px;
+    height: 30px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    transition: all 0.1 ease-in-out;
+}
+
+.register-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:80px;
+}
+
+.register-button {
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.register {
     border-radius: 20px;
     padding:0;
     font-size: 13px;

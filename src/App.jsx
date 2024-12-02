@@ -7,6 +7,7 @@ import LoginView from './views/LoginView'
 import RegisterView from './views/RegisterView'
 import HomeView from './views/HomeView'
 import MoviesView from './views/MoviesView'
+import Feature from './components/Feature'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/register" element={<RegisterView />} />
         <Route path="/login" element={<LoginView />} />
         <Route path="/movies" element={<MoviesView />}>
+          <Route path="" element={<Feature />}/>
           <Route path="genre/:genre_id" element={<GenreView />} />
           <Route path="details/:id" element={<DetailView />} />
         </Route>

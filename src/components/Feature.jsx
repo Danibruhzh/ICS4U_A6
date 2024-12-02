@@ -33,7 +33,7 @@ function Feature() {
                                 alt={movie.title}
                             />
                             <span className="movie-list-item-title">{movie.original_title}</span>
-                            <p className="movie-list-item-desc">{movie.overview || "Description"}</p>
+                            <p className="movie-list-item-desc">{movie.overview}</p>
                             <button className="movie-list-item-button" onClick={() => {loadMovie(movie.id)}}>Watch</button>
                             <button className="movie-list-item-button rent">Rent</button>
                         </div>

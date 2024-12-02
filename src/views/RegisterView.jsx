@@ -44,7 +44,7 @@ function RegisterView() {
                     <div className="help">
                         <div className="terms">
                             <input type="checkbox" id="terms" />
-                            <label for="terms">Agree to <a href="#">Terms & Conditions</a></label>
+                            <label for="terms"> Agree to <a href="#">Terms & Conditions</a></label>
                         </div>
                         <a href="#">Need help?</a>
                     </div>

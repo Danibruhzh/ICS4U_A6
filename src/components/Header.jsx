@@ -1,22 +1,27 @@
 import './Header.css'
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
+    const navigate = useNavigate();
+
+    function loadHome(){
+        navigate(`/`);
+    }
+
     return (
         <div className="header">
             <div className="header-container">
                 <div className="logo-container">
                     <div className="logo">
-                        <h1>Freakflix</h1>
+                        <h1 onClick={() => loadHome()}>Freakflix</h1>
                     </div>
                 </div>
                 <div className="menu-container">
                     <div className="menu">
-                        <ul className="menu-list">
-                            <li className="menu-list-item active">Home</li>
-                            <li className="menu-list-item">Movies</li>
-                            <li className="menu-list-item">Shows</li>
-                            <li className="menu-list-item">Trending</li>
-                        </ul>
+                        <form className="menu-list">
+                            <a className="menu-list-item active" href='/'>Home</a>
+                            <a className="menu-list-item" href="/movies">Movies</a>
+                        </form>
                     </div>
                 </div>
                 <div className="search-bar-container">
@@ -31,6 +36,13 @@ function Header() {
                     <div className="sign-in-button">
                         <form action="/login">
                             <button className="sign-in" type="submit">Sign-in</button>
+                        </form>
+                    </div>
+                </div>
+                <div className="register-button-container">
+                    <div className="register-button">
+                        <form action="/register">
+                            <button className="register" type="submit">Register</button>
                         </form>
                     </div>
                 </div>
