@@ -67,15 +67,21 @@
 .movie-list-item-desc {
     padding: 10px;
     font-size: 14px;
+    font-family: "Rubik", sans-serif;
     position: absolute;
-    top: 20%;
+    top: 25%;
     left: 20px;
     width: 370px;
+    height: 80px;
     opacity: 0;
     transition: all 0.3s ease-in-out;
-
-    font-family: "Rubik", sans-serif;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
+
 
 .movie-list-item-button {
     padding: 10px;

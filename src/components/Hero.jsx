@@ -10,9 +10,9 @@ function Hero() {
   useEffect(() => {
     (async function getMovies() {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_KEY}`
+        `https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_TMDB_KEY}&page=${Math.floor(Math.random()*3)}`
       );
-      setMovie(response.data.results[0]);
+      setMovie(response.data.results[Math.floor(Math.random()*21)]);
     })();
   }, []);
 
@@ -21,16 +21,17 @@ function Hero() {
   }
 
   return (
-    <div className="featured-content">
+    <div className="featured-content" style={{
+      backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), #111111), url('https://image.tmdb.org/t/p/w500${movie.backdrop_path}')`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}>
       <div className="featured-container">
         <h1 className="featured-title">{movie.original_title}</h1>
         <p className="featured-desc">{movie.overview}</p>
-        <button className="featured-button watch" onClick={() => {loadMovie(movie.id)}}>WATCH</button>
+        <button className="featured-button watch" onClick={() => { loadMovie(movie.id) }}>WATCH</button>
         <button className="featured-button rent">RENT</button>
-      </div>
-
-      <div className="poster-container">
-        <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} className="movie-image" />
       </div>
     </div>
   )

@@ -6,9 +6,8 @@ import { useParams } from 'react-router-dom'
 function DetailView() {
     const [movie, setMovie] = useState([]);
     const [genres, setGenres] = useState([]);
+    const [trailers, setTrailers] = useState([]);
     const params = useParams();
-    const genreMap = new Map();
-    const iterator = genreMap.values();
 
     useEffect(() => {
         (async function getMovie() {
@@ -17,24 +16,27 @@ function DetailView() {
             );
             setMovie(response.data);
             setGenres(response.data.genres);
+            console.log(movie.videos);
+            // Why do I have to console log it in order for this to work???
+            setTrailers(response.data.videos.results.filter((video) => video.type === "Trailer"));
         })();
     }, []);
-
-    genres.forEach((obj) => {
-        genreMap.set(obj.id, obj.name);
-    });
 
     return (
         <div className="movie-detail">
             <h1 className="movie-title">{movie.original_title}</h1>
+            <p className='tagline'>{movie.tagline}</p>
             <p className="movie-overview">{movie.overview}</p>
+            <div className='movie-genres'>
+                <strong>Genres:</strong>{genres.map((obj, index) => (<span key={index}> {obj.name}{index < genres.length-1? ', ' : ''}</span>))}
+            </div>
             <div className="movie-info">
-                <p><strong>Release Date:</strong> {movie.release_date}</p>
-                <p><strong>Runtime:</strong> {movie.runtime} minutes</p>
-                <p><strong>Budget:</strong> ${movie.budget}</p>
-                <p><strong>Revenue:</strong> ${movie.revenue} </p>
-                <p><strong>Overall Rating:</strong> {movie.vote_average}/10 ({movie.vote_count} ratings)</p>
-                <p><strong>Genres:</strong> {iterator.next().value}, {iterator.next().value}</p>
+                <div className='release-date'><strong>Release Date:</strong> {movie.release_date}</div>
+                <div className='runtime'><strong>Runtime:</strong> {movie.runtime} minutes</div>
+                <div className='budget'><strong>Budget:</strong> ${movie.budget}</div>
+                <div className='revenue'><strong>Revenue:</strong> ${movie.revenue} </div>
+                <div className='rating'><strong>Overall Rating:</strong> {movie.vote_average}/10 ({movie.vote_count} ratings)</div>
+
             </div>
             {movie.poster_path && (
                 <img
@@ -44,11 +46,10 @@ function DetailView() {
                 />
             )}
 
-            {/* Trailers Section */}
             <div className="trailers-section">
                 <h2>Trailers</h2>
                 <div className="trailers-grid">
-                    {movie.videos && movie.videos.results.map((trailer) => (
+                    {trailers.map((trailer) => (
                         <div key={trailer.id} className="trailer-tile">
                             <a
                                 href={`https://www.youtube.com/watch?v=${trailer.key}`}

@@ -1,23 +1,19 @@
 .featured-content {
-    height: 60vh;
+    height: 80vh;
     padding: 100px;
     display: flex;
 }
 
-.movie-image{
-    height:100%;
-}
-
 .featured-title {
-    width: 600px;
-    font-size: 4rem;
+    width: 1000px;
+    font-size: 6rem;
 }
 
 .featured-desc {
-    width: 500px;
+    width: 700px;
     color: lightgray;
     margin: 30px 0;
-    font-size: large;
+    font-size: larger;
     font-weight: 400;
     font-family: "Rubik", sans-serif;
 }
