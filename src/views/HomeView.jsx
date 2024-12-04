@@ -12,6 +12,8 @@ function HomeView() {
                 <div className="content-container">
                     <Hero />
                     <Feature />
+                    <Hero />
+                    <Feature />
                 </div>
             </div>
             <Footer />

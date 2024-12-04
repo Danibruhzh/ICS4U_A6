@@ -28,6 +28,22 @@ function Feature() {
         return array;
     }
 
+    // function shift(){
+    //     let clickCount=0;
+    //     let ratio = Math.floor(((window.innerWidth)-60)/440);
+    //     console.log(ratio);
+
+    //     if (itemNum - (3 + clickCount) + (3 - ratio) >= 0){
+    //         movieList[i].style.transform = `translateX(${
+    //             movieList[i].computedStyleMap().get("transform")[0].x.value-440}px)`;
+            
+    //         } else{
+    //             movieList[i].style.transform = "translateX(0)"
+    //             clickCount=0;
+    //         }
+    //     };
+    // }
+
     const shuffled = shuffle(movies);
 
     return (

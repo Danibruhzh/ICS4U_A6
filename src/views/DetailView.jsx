@@ -16,15 +16,13 @@ function DetailView() {
             );
             setMovie(response.data);
             setGenres(response.data.genres);
-            console.log(movie.videos);
-            // Why do I have to console log it in order for this to work???
             setTrailers(response.data.videos.results.filter((video) => video.type === "Trailer"));
         })();
     }, []);
 
     return (
         <div className="movie-detail">
-            <h1 className="movie-title">{movie.original_title}</h1>
+            <h1 className="movie-title-2">{movie.original_title}</h1>
             <p className='tagline'>{movie.tagline}</p>
             <p className="movie-overview">{movie.overview}</p>
             <div className='movie-genres'>
@@ -54,7 +52,8 @@ function DetailView() {
                             <a
                                 href={`https://www.youtube.com/watch?v=${trailer.key}`}
                                 target="_blank"
-                                rel="noopener noreferrer"
+                                rel="noop
+                                ener noreferrer"
                             >
                                 <img
                                     className="trailer-thumbnail"

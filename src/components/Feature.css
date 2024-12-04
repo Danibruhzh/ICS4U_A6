@@ -72,7 +72,7 @@
     top: 25%;
     left: 20px;
     width: 370px;
-    height: 80px;
+    height: 75px;
     opacity: 0;
     transition: all 0.3s ease-in-out;
     text-overflow: ellipsis;
