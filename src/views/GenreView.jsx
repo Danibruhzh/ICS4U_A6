@@ -64,13 +64,13 @@ function GenreView() {
                 <p>
                     <a onClick={() => {
                         if (page > 1) {
-                            setPage(page - 1), getMoviesByPage(page)
+                            setPage(page - 1), getMoviesByPage(page-1)
                         }
                     }}>
                         Previous Page
                     </a> -- <a onClick={() => {
                         if (page < 50) {
-                            setPage(page + 1), getMoviesByPage(page)
+                            setPage(page + 1), getMoviesByPage(page+1)
                         }
                     }}>Next Page</a></p>
             </div>

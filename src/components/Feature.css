@@ -26,7 +26,6 @@
     display: flex;
     align-items: center;
     height: 300px;
-    transform: translateX(0);
     transition: all 0.3s ease-in-out;
 }
 
@@ -69,10 +68,10 @@
     font-size: 14px;
     font-family: "Rubik", sans-serif;
     position: absolute;
-    top: 25%;
+    top: 27%;
     left: 20px;
     width: 370px;
-    height: 75px;
+    height: 77px;
     opacity: 0;
     transition: all 0.3s ease-in-out;
     text-overflow: ellipsis;
@@ -93,7 +92,7 @@
     border: none;
     cursor: pointer;
     position: absolute;
-    bottom: 50px;
+    bottom: 40px;
     left: 30px;
     box-sizing: border-box;
 

@@ -1,11 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import './Feature.css'
 
 function Feature() {
     const [movies, setMovies] = useState([]);
+    const [shuffledMovies, setShuffledMovies] = useState([]);
     const navigate = useNavigate();
+    const [clickCount, setClickCount] = useState(0);
+    const [currentTransform, setCurrentTransform] = useState(0);
 
     useEffect(() => {
         (async function getMovies() {
@@ -13,6 +16,7 @@ function Feature() {
                 `https://api.themoviedb.org/3/movie/now_playing?api_key=${import.meta.env.VITE_TMDB_KEY}`
             );
             setMovies(response.data.results);
+            setShuffledMovies(shuffle(response.data.results));
         })();
     }, []);
 
@@ -28,44 +32,41 @@ function Feature() {
         return array;
     }
 
-    // function shift(){
-    //     let clickCount=0;
-    //     let ratio = Math.floor(((window.innerWidth)-60)/440);
-    //     console.log(ratio);
+    function shift() {
+        let ratio = Math.floor(((window.innerWidth) - 60) / 440);
 
-    //     if (itemNum - (3 + clickCount) + (3 - ratio) >= 0){
-    //         movieList[i].style.transform = `translateX(${
-    //             movieList[i].computedStyleMap().get("transform")[0].x.value-440}px)`;
-            
-    //         } else{
-    //             movieList[i].style.transform = "translateX(0)"
-    //             clickCount=0;
-    //         }
-    //     };
-    // }
-
-    const shuffled = shuffle(movies);
+        if (20 - (3 + clickCount) + (3 - ratio) >= 0) {
+            const newTransform = currentTransform - 440;
+            setCurrentTransform(newTransform);
+            setClickCount(clickCount + 1);
+        } else {
+            setCurrentTransform(0);
+            setClickCount(0);
+        }
+    };
 
     return (
-        <div className="movie-list-container">
-            <h1 className="movie-list-title"> Now Playing </h1>
-            <div className="movie-list-wrapper">
-                <div className="movie-list">
-                    {shuffled.slice(1, 9).map((movie, index) => (
-                        <div className="movie-list-item" key={index}>
-                            <img
-                                className="movie-list-item-image"
-                                src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
-                                alt={movie.title}
-                            />
-                            <span className="movie-list-item-title">{movie.original_title}</span>
-                            <p className="movie-list-item-desc">{movie.overview}</p>
-                            <button className="movie-list-item-button" onClick={() => { loadMovie(movie.id) }}>Watch</button>
-                            <button className="movie-list-item-button rent">Rent</button>
-                        </div>
-                    ))}
+        <div>
+            <div className="movie-list-container">
+                <h1 className="movie-list-title"> Now Playing </h1>
+                <div className="movie-list-wrapper">
+                    <div className="movie-list" style={{ transform: `translateX(${currentTransform}px)` }}>
+                        {shuffledMovies.map((movie, index) => (
+                            <div className="movie-list-item" key={index}>
+                                <img
+                                    className="movie-list-item-image"
+                                    src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+                                    alt={movie.title}
+                                />
+                                <span className="movie-list-item-title">{movie.original_title}</span>
+                                <p className="movie-list-item-desc">{movie.overview}</p>
+                                <button className="movie-list-item-button" onClick={() => { loadMovie(movie.id) }}>Details</button>
+                                <button className="movie-list-item-button rent">Rent</button>
+                            </div>
+                        ))}
+                    </div>
+                    <i className="fa-solid fa-arrow-right arrow" onClick={() => shift()}></i>
                 </div>
-                <i className="fa-solid fa-arrow-right arrow"></i>
             </div>
         </div>
     );

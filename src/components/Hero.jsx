@@ -30,7 +30,7 @@ function Hero() {
       <div className="featured-container">
         <h1 className="featured-title">{movie.original_title}</h1>
         <p className="featured-desc">{movie.overview}</p>
-        <button className="featured-button watch" onClick={() => { loadMovie(movie.id) }}>WATCH</button>
+        <button className="featured-button watch" onClick={() => { loadMovie(movie.id) }}>DETAILS</button>
         <button className="featured-button rent">RENT</button>
       </div>
     </div>
