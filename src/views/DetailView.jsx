@@ -26,7 +26,7 @@ function DetailView() {
             <p className='tagline'>{movie.tagline}</p>
             <p className="movie-overview">{movie.overview}</p>
             <div className='movie-genres'>
-                <strong>Genres:</strong>{genres.map((obj, index) => (<span key={index}> {obj.name}{index < genres.length-1? ', ' : ''}</span>))}
+                <strong>Genres:</strong>{genres.map((obj, index) => (<span key={index}> {obj.name}{index < genres.length - 1 ? ', ' : ''}</span>))}
             </div>
             <div className="movie-info">
                 <div className='release-date'><strong>Release Date:</strong> {movie.release_date}</div>
@@ -34,7 +34,6 @@ function DetailView() {
                 <div className='budget'><strong>Budget:</strong> ${movie.budget}</div>
                 <div className='revenue'><strong>Revenue:</strong> ${movie.revenue} </div>
                 <div className='rating'><strong>Overall Rating:</strong> {movie.vote_average}/10 ({movie.vote_count} ratings)</div>
-
             </div>
             {movie.poster_path && (
                 <img
@@ -43,7 +42,6 @@ function DetailView() {
                     alt={movie.original_title}
                 />
             )}
-
             <div className="trailers-section">
                 <h2>Trailers</h2>
                 <div className="trailers-grid">

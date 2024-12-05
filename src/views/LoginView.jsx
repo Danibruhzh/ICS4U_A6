@@ -24,23 +24,20 @@ function LoginView() {
                     <button className="home" id="home-button" type="submit">Home</button>
                 </form>
             </div>
-
             <div>
                 <h1 className="title">
                     Freakflix
                 </h1>
             </div>
-
-
             <div className="island">
                 <h2>SIGN IN</h2>
-                <form onSubmit={(event) => {login(event)}}>
+                <form onSubmit={(event) => { login(event) }}>
                     <div className="field">
                         <input type="text" required />
                         <label>Email or phone number</label>
                     </div>
                     <div className="field">
-                        <input type="password" value={password} onChange={(event) => {setPassword(event.target.value)}} required />
+                        <input type="password" value={password} onChange={(event) => { setPassword(event.target.value) }} required />
                         <label>Password</label>
                     </div>
                     <button type="submit">Sign In</button>

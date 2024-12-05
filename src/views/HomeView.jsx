@@ -16,7 +16,6 @@ function HomeView() {
             </div>
             <Footer />
         </>
-
     )
 }
 

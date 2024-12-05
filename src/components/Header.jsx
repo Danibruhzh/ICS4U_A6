@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 function Header() {
     const navigate = useNavigate();
 
-    function loadHome(){
+    function loadHome() {
         navigate(`/`);
     }
 
@@ -31,7 +31,6 @@ function Header() {
                         </form>
                     </div>
                 </div>
-
                 <div className="sign-in-button-container">
                     <div className="sign-in-button">
                         <form action="/login">
