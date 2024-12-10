@@ -1,4 +1,4 @@
-// import { useState } from 'react'
+import { StoreProvider } from "./context"
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import GenreView from './views/GenreView'
