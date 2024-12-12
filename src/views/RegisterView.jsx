@@ -6,22 +6,27 @@ import axios from 'axios';
 
 function RegisterView() {
     const { genres, setGenres } = useStoreContext();
-    const genresAdd = [];
     const [genreMap, setGenreMap] = useState([]);
+    // const [genreSelect, setGenreSelect] = useState([]);
+    const genreSelect = useRef([]);
 
     useEffect(() => {
         (async function getGenres() {
             const response = await axios.get(
                 `https://api.themoviedb.org/3/genre/movie/list?api_key=${import.meta.env.VITE_TMDB_KEY}`
             );
-            setGenreMap(response.data.genres.filter(genre => genre.name !== "Documentary" && genre.name !== "Drama" && genre.name !== "Romance" && genre.name !== "TV Movie"));
+            setGenres(response.data.genres.filter(genre => genre.name !== "Documentary" && genre.name !== "Drama" && genre.name !== "Romance" && genre.name !== "TV Movie"));
         })();
     }, []);
-    console.log(genreMap);
 
-    function changeGenres() {
-        setGenres(genreMap);
-    }
+    // function changeGenres() {
+    //     setGenres(genreMap);
+    // }
+
+    useEffect(() => {
+        genreSelect.current.push(genreMap);
+        console.log(genreSelect);
+    }, [genreMap]);
 
     return (
         <div className='register-container'>
@@ -72,12 +77,9 @@ function RegisterView() {
                 </form>
                 <p>Already have an account? <a href="/login">Sign In</a></p>
                 <div className="genre-selector">
-                    {genreMap.map((genre) =>(
+                    {genres.map((genre) =>(
                         <button key={genre.id} className='selection' onClick={() => {
-                            genresAdd.push([genre.id, genre.name]);
-                            setGenres(genresAdd);
-                            console.log(genresAdd);
-                            console.log(genres);
+                            setGenreMap([genre.id, genre.name]);
                         }}>{genre.name}</button>
                     ))}
                 </div>
