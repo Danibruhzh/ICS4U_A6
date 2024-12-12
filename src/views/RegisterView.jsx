@@ -6,7 +6,8 @@ import axios from 'axios';
 
 function RegisterView() {
     const { genres, setGenres } = useStoreContext();
-    const [genreMap, setGenreMap] = useState(Map());
+    const genresAdd = [];
+    const [genreMap, setGenreMap] = useState([]);
 
     useEffect(() => {
         (async function getGenres() {
@@ -71,10 +72,12 @@ function RegisterView() {
                 </form>
                 <p>Already have an account? <a href="/login">Sign In</a></p>
                 <div className="genre-selector">
-                    {genres.map((genre) =>(
+                    {genreMap.map((genre) =>(
                         <button key={genre.id} className='selection' onClick={() => {
-                            genreMap.set(genre.id, genre.name);
-                            console.log(genreMap);
+                            genresAdd.push([genre.id, genre.name]);
+                            setGenres(genresAdd);
+                            console.log(genresAdd);
+                            console.log(genres);
                         }}>{genre.name}</button>
                     ))}
                 </div>
