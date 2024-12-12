@@ -1,7 +1,27 @@
 import './RegisterView.css'
 import Background from '../images/movie feature.png'
+import { useStoreContext } from '../context'
+import { useEffect, useState, useRef } from 'react';
+import axios from 'axios';
 
 function RegisterView() {
+    const { genres, setGenres } = useStoreContext();
+    const [genreMap, setGenreMap] = useState(Map());
+
+    useEffect(() => {
+        (async function getGenres() {
+            const response = await axios.get(
+                `https://api.themoviedb.org/3/genre/movie/list?api_key=${import.meta.env.VITE_TMDB_KEY}`
+            );
+            setGenres(response.data.genres.filter(genre => genre.name !== "Documentary" && genre.name !== "Drama" && genre.name !== "Romance" && genre.name !== "TV Movie"));
+        })();
+    }, []);
+    console.log(genres);
+
+    function changeGenres() {
+        setGenres(genreMap);
+    }
+
     return (
         <div className='register-container'>
             <img src={Background} alt="Movie background" className="background" />
@@ -40,7 +60,7 @@ function RegisterView() {
                         <input type="password" required />
                         <label>Re-enter Password</label>
                     </div>
-                    <button type="submit">Create Account</button>
+                    <button onClick={() => {changeGenres()}}>Create Account</button>
                     <div className="help">
                         <div className="terms">
                             <input type="checkbox" id="terms" />
@@ -50,6 +70,14 @@ function RegisterView() {
                     </div>
                 </form>
                 <p>Already have an account? <a href="/login">Sign In</a></p>
+                <div className="genre-selector">
+                    {genres.map((genre) =>(
+                        <button key={genre.id} className='selection' onClick={() => {
+                            genreMap.set(genre.id, genre.name);
+                            console.log(genreMap);
+                        }}>{genre.name}</button>
+                    ))}
+                </div>
             </div>
         </div>
     )

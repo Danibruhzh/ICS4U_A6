@@ -8,22 +8,28 @@ import RegisterView from './views/RegisterView'
 import HomeView from './views/HomeView'
 import MoviesView from './views/MoviesView'
 import Feature from './components/Feature'
+import CartView from './views/CartView'
+import SettingsView from './views/SettingsView'
 
 function App() {
 
   return (
-    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-      <Routes>
-        <Route path="/" element={<HomeView />} />
-        <Route path="/register" element={<RegisterView />} />
-        <Route path="/login" element={<LoginView />} />
-        <Route path="/movies" element={<MoviesView />}>
-          <Route path="" element={<Feature />} />
-          <Route path="genre/:genre_id" element={<GenreView />} />
-          <Route path="details/:id" element={<DetailView />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <StoreProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomeView />} />
+          <Route path="/register" element={<RegisterView />} />
+          <Route path="/login" element={<LoginView />} />
+          <Route path="/movies" element={<MoviesView />}>
+            <Route path="" element={<Feature />} />
+            <Route path="genre/:genre_id" element={<GenreView />} />
+            <Route path="details/:id" element={<DetailView />} />
+          </Route>
+          <Route path="/cart" element={<CartView />} />
+          <Route path="/settings" element={<SettingsView />} />
+        </Routes>
+      </BrowserRouter>
+    </StoreProvider>
   )
 }
 

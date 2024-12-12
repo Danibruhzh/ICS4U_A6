@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import './Genre.css'
+import { useStoreContext } from "../context";
 
 function Genre() {
-    const [genres, setGenres] = useState([]);
+    const {genres, setGenres} = useStoreContext();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -12,7 +13,6 @@ function Genre() {
             const response = await axios.get(
                 `https://api.themoviedb.org/3/genre/movie/list?api_key=${import.meta.env.VITE_TMDB_KEY}`
             );
-            setGenres(response.data.genres);
         })();
     }, []);
 
