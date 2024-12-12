@@ -13,10 +13,10 @@ function RegisterView() {
             const response = await axios.get(
                 `https://api.themoviedb.org/3/genre/movie/list?api_key=${import.meta.env.VITE_TMDB_KEY}`
             );
-            setGenres(response.data.genres.filter(genre => genre.name !== "Documentary" && genre.name !== "Drama" && genre.name !== "Romance" && genre.name !== "TV Movie"));
+            setGenreMap(response.data.genres.filter(genre => genre.name !== "Documentary" && genre.name !== "Drama" && genre.name !== "Romance" && genre.name !== "TV Movie"));
         })();
     }, []);
-    console.log(genres);
+    console.log(genreMap);
 
     function changeGenres() {
         setGenres(genreMap);
