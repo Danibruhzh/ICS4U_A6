@@ -6,9 +6,9 @@ import axios from 'axios';
 
 function RegisterView() {
     const { genres, setGenres } = useStoreContext();
-    const [genreMap, setGenreMap] = useState([]);
+    const [genreSelect, setGenreSelect] = useState({});
     // const [genreSelect, setGenreSelect] = useState([]);
-    const genreSelect = useRef([]);
+    const genreMap = useRef([]);
 
     useEffect(() => {
         (async function getGenres() {
@@ -24,9 +24,14 @@ function RegisterView() {
     // }
 
     useEffect(() => {
-        genreSelect.current.push(genreMap);
+        if (!genreMap.current.includes(genreSelect)) {
+            genreMap.current.push(genreSelect);
+        } 
+        // fix
+
         console.log(genreSelect);
-    }, [genreMap]);
+        console.log(genreMap);
+    }, [genreSelect]);
 
     return (
         <div className='register-container'>
@@ -66,7 +71,7 @@ function RegisterView() {
                         <input type="password" required />
                         <label>Re-enter Password</label>
                     </div>
-                    <button onClick={() => {changeGenres()}}>Create Account</button>
+                    <button onClick={() => { changeGenres() }}>Create Account</button>
                     <div className="help">
                         <div className="terms">
                             <input type="checkbox" id="terms" />
@@ -77,9 +82,9 @@ function RegisterView() {
                 </form>
                 <p>Already have an account? <a href="/login">Sign In</a></p>
                 <div className="genre-selector">
-                    {genres.map((genre) =>(
+                    {genres.map((genre) => (
                         <button key={genre.id} className='selection' onClick={() => {
-                            setGenreMap([genre.id, genre.name]);
+                            setGenreSelect([genre.id, genre.name]);
                         }}>{genre.name}</button>
                     ))}
                 </div>
