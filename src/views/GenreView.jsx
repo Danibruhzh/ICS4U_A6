@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import { useStoreContext } from '../context'
 
 function GenreView() {
     const [movies, setMovies] = useState([]);
@@ -11,6 +12,8 @@ function GenreView() {
     const params = useParams();
     const [page, setPage] = useState(1);
     const navigate = useNavigate();
+    const { cart, setCart, logged } = useStoreContext();
+
 
     useEffect(() => {
         (async function getMovies() {
@@ -48,13 +51,17 @@ function GenreView() {
                 <h1 className="genre-title"> {genreMap.get(Number(params.genre_id))} </h1>
                 <div className="movies">
                     {movies.slice(0, 21).map((movie, index) => (
-                        <div className="movie" key={index} onClick={() => loadMovie(movie.id)}>
-                            <img
-                                className="movie-poster"
-                                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                                alt={movie.title}
-                            />
-                            <span className="movie-title">{movie.original_title}</span>
+                        <div>
+                            <div className="movie" key={index} onClick={() => loadMovie(movie.id)}>
+                                <img
+                                    className="movie-poster"
+                                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                    alt={movie.title}
+                                />
+                                <span className="movie-title">{movie.original_title}</span>
+
+                            </div>
+                            <button className="add-to-cart" onClick={() => { logged ? setCart((prevCart) => prevCart.set(movie.id, { title: movie.original_title, poster: movie.poster_path })) : alert("Login first!") }}>{`${cart.has(movie.id) && logged ? 'Added' : 'Buy'}`}</button>
                         </div>
                     ))}
                 </div>

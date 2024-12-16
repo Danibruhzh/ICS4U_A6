@@ -5,7 +5,6 @@ import "./Cartview.css"
 function CartView() {
     const { cart, setCart } = useStoreContext();
     const navigate = useNavigate();
-
     const cartItems = [];
 
     cart.forEach((movie, id) => {
@@ -22,18 +21,33 @@ function CartView() {
         );
     })
 
-    return (
-        <div>
-            <h1 className="shopping-cart">Shopping Cart</h1>
-            <div className="button-container2">
-                <button className="home-button" onClick={() => navigate('/')}>Home</button>
-                <button className="movies-button" onClick={() => navigate('/movies')}>Find more movies</button>
+    if (cartItems.length > 0) {
+        return (
+            <div>
+                <h1 className="shopping-cart">Shopping Cart</h1>
+                <div className="button-container2">
+                    <button className="home-button" onClick={() => navigate('/')}>Home</button>
+                    <button className="movies-button" onClick={() => navigate('/movies')}>Find more movies</button>
+                </div>
+                <div className="cart-list">
+                    {cartItems}
+                </div>
             </div>
-            <div className="cart-list">
-                {cartItems}
+        )
+    } else {
+        return (
+            <div>
+                <h1 className="shopping-cart">Shopping Cart</h1>
+                <div className="button-container2">
+                    <button className="home-button" onClick={() => navigate('/')}>Home</button>
+                    <button className="movies-button" onClick={() => navigate('/movies')}>Find more movies</button>
+                </div>
+                <div className="cart-list">
+                    No items in cart! Add some movies!
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default CartView

@@ -102,7 +102,7 @@ function RegisterView() {
                     <button onClick={changeGenres} disabled={!valid} className={!valid ? 'disabled-button' : ''}>Create Account</button>
                     <div className="help">
                         <div className="terms">
-                            <input type="checkbox" id="terms" checked={isChecked} onClick={() => {setIsChecked(!isChecked)}}/>
+                            <input type="checkbox" id="terms" checked={isChecked} onClick={() => { setIsChecked(!isChecked) }} />
                             <label for="terms"> Agree to <a href="#">Terms & Conditions</a></label>
                         </div>
                         <a href="#">Need help?</a>

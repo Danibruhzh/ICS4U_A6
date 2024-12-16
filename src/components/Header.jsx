@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useStoreContext } from '../context';
 
 function Header() {
-    const { name, setName, logged, setLogged } = useStoreContext();
+    const { name, lname, setName, logged, setLogged } = useStoreContext();
     const navigate = useNavigate();
 
     if (logged === false) {
@@ -60,7 +60,7 @@ function Header() {
                         </div>
                     </div>
                     <div className='welcome'>
-                        <p>Welcome, {name}!</p>
+                        <p>Welcome, {name} {lname}!</p>
                     </div>
                     <div className="menu-container">
                         <div className="menu">

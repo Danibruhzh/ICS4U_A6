@@ -3,7 +3,7 @@ import './Genre.css'
 import { useStoreContext } from "../context";
 
 function Genre() {
-    const {genres} = useStoreContext();
+    const { genres } = useStoreContext();
     const navigate = useNavigate();
 
     function loadGenre(id) {
@@ -17,7 +17,7 @@ function Genre() {
                     .filter(genre => genre.name !== "Documentary" && genre.name !== "Drama" && genre.name !== "Romance" && genre.name !== "TV Movie")
                     .slice(0, 20)
                     .map((genre) => (
-                        <ul key={genre.id} className="genre" onClick={() => { loadGenre(genre.id)}}>
+                        <ul key={genre.id} className="genre" onClick={() => { loadGenre(genre.id) }}>
                             {genre.name}
                         </ul>
                     ))}
