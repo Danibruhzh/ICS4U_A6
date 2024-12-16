@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useStoreContext } from "../context";
 import axios from "axios";
 import './Hero.css';
 
 function Hero() {
   const [movie, setMovie] = useState([]);
+  const {cart, setCart} = useStoreContext();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,8 +32,8 @@ function Hero() {
       <div className="featured-container">
         <h1 className="featured-title">{movie.original_title}</h1>
         <p className="featured-desc">{movie.overview}</p>
-        <button className="featured-button watch" onClick={() => { loadMovie(movie.id) }}>DETAILS</button>
-        <button className="featured-button rent">RENT</button>
+        <button className="featured-button watch" onClick={() => { loadMovie(movie.id) }}>Details</button>
+        <button className="featured-button rent" onClick={() => setCart((prevCart) => prevCart.set(movie.id, {title: movie.original_title, poster: movie.poster_path}))}>{`${cart.has(movie.id) ? 'Added' : 'Buy'}`}</button>
       </div>
     </div>
   )

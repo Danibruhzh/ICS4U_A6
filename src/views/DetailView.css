@@ -58,7 +58,7 @@
     margin-bottom: 1.5rem;
     text-align: center;
     color: #333;
-    
+
 }
 
 /* Info Section */
@@ -118,4 +118,9 @@
     font-size: 0.9rem;
     margin-top: 0.5rem;
     color: #555;
+}
+
+.add-to-cart {
+    width: 100px;
+    margin-bottom: 20px;
 }

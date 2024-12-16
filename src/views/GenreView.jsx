@@ -25,7 +25,7 @@ function GenreView() {
             );
             setGenre(response.data.genres);
         })();
-    }, []);
+    }, [params.genre_id]);
 
     async function getMoviesByPage(page) {
         const response = await axios.get(

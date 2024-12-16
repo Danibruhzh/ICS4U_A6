@@ -2,17 +2,21 @@ import './RegisterView.css'
 import Background from '../images/movie feature.png'
 import { useStoreContext } from '../context'
 import { useEffect, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function RegisterView() {
-    const { genres, setGenres } = useStoreContext();
+    const { setGenres, setName, setLname, setEmail, setLogged } = useStoreContext();
     const [genresAll, setGenresAll] = useState([]);
     const [genreMap, setGenreMap] = useState([]);
-    const firstName = useRef();
-    const lastName = useRef();
-    const email = useRef();
-    const password = useRef();
-    const confirmPassword = useRef();
+    const firstName = useRef('');
+    const lastName = useRef('');
+    const email = useRef('');
+    const password = useRef('');
+    const confirmPassword = useRef('');
+    const [isChecked, setIsChecked] = useState(false);
+    const [valid, setValid] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         (async function getGenres() {
@@ -24,10 +28,16 @@ function RegisterView() {
         })();
     }, []);
 
-    function changeGenres() {
+    function changeGenres(event) {
+        event.preventDefault();
         if (genreMap.length >= 10) {
             let fullList = genresAll;
             setGenres(fullList.filter((item) => genreMap.includes(item.id)));
+            setName(firstName.current.value.trim());
+            setLname(lastName.current.value.trim());
+            setEmail(email.current.value.trim());
+            setLogged(true);
+            navigate("/");
         } else {
             alert("Please select at least 10 genres!");
         }
@@ -43,22 +53,20 @@ function RegisterView() {
         })
     };
 
-    const isFormValid = () => {
-        const firstName2 = firstName.current ? firstName.current.value.trim() : '';
-        const lastName2 = lastName.current ? lastName.current.value.trim() : '';
-        const email2 = email.current ? email.current.value.trim() : '';
-        const password2 = password.current ? password.current.value.trim() : '';
-        const confirmPassword2 = confirmPassword.current ? confirmPassword.current.value.trim() : '';
-        return firstName2 && lastName2 && email2 && password2 && confirmPassword2 && password2 === confirmPassword2;
-    };
-    
+    useEffect(() => {
+        updateForm();
+    })
+
+    const updateForm = () => {
+        setValid(!firstName.current.value.trim() == '' && !lastName.current.value.trim() == '' && !email.current.value.trim() == '' && !password.current.value.trim() == '' && (confirmPassword.current.value.trim() == password.current.value.trim()) && isChecked);
+    }
 
     return (
         <div className='register-container'>
             <img src={Background} alt="Movie background" className="background" />
             <div>
                 <form>
-                    <button className="home" id="home-button" type="submit">Home</button>
+                    <button className="home" id="home-button" onClick={() => navigate('/')}>Home</button>
                 </form>
             </div>
 
@@ -70,31 +78,31 @@ function RegisterView() {
 
             <div className="island">
                 <h2>CREATE ACCOUNT</h2>
-                <form onSubmit="/movies">
+                <form>
                     <div className="field">
-                        <input type="text" ref={firstName} required />
+                        <input type="text" ref={firstName} onChange={updateForm} required />
                         <label>First Name</label>
                     </div>
                     <div className="field">
-                        <input type="text" ref={lastName} required />
+                        <input type="text" ref={lastName} onChange={updateForm} required />
                         <label>Last Name</label>
                     </div>
                     <div className="field">
-                        <input type="text" ref={email} required />
+                        <input type="text" ref={email} onChange={updateForm} required />
                         <label>Email or phone number</label>
                     </div>
                     <div className="field">
-                        <input type="password" ref={password} required />
+                        <input type="password" ref={password} onChange={updateForm} required />
                         <label>Password</label>
                     </div>
                     <div className="field">
-                        <input type="password" ref={confirmPassword} required />
+                        <input type="password" ref={confirmPassword} onChange={updateForm} required />
                         <label>Re-enter Password</label>
                     </div>
-                    <button onClick={changeGenres} disabled={!isFormValid()} className={!isFormValid() ? 'disabled-button' : ''}>Create Account</button>
+                    <button onClick={changeGenres} disabled={!valid} className={!valid ? 'disabled-button' : ''}>Create Account</button>
                     <div className="help">
                         <div className="terms">
-                            <input type="checkbox" id="terms" />
+                            <input type="checkbox" id="terms" checked={isChecked} onClick={() => {setIsChecked(!isChecked)}}/>
                             <label for="terms"> Agree to <a href="#">Terms & Conditions</a></label>
                         </div>
                         <a href="#">Need help?</a>

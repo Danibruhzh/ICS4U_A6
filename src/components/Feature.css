@@ -61,6 +61,11 @@
     left: 20px;
     opacity: 0;
     transition: all 0.3s ease-in-out;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .movie-list-item-desc {
